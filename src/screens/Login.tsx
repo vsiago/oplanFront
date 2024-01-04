@@ -9,7 +9,6 @@ import {
   Alert,
 } from "react-native";
 
-import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from "../contexts/AuthContext";
 
 export default function SingIn() {
@@ -18,40 +17,12 @@ export default function SingIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigation = useNavigation();
-
-  const navigateToLogin = () => {
-    navigation.navigate("home" as never);
-  };
-
-  // Array de objetos com informações de usuário e senha
-  const users = [
-    { email: "iago", password: "123" },
-    { email: "maria", password: "321" },
-    { email: "isis", password: "1234" },
-    // Adicione mais usuários conforme necessário
-  ];
-
   async function handleLogin() {
     if (email === "" || password === "") {
       return;
     }
 
     await signIn({ email, password });
-
-    // Verificar se há um usuário correspondente na array
-    const userFound = users.find(
-      (user) => user.email === email && user.password === password
-    );
-
-    if (userFound) {
-      // Autenticação bem-sucedida
-      Alert.alert("Login bem-sucedido!");
-      navigateToLogin();
-    } else {
-      // Autenticação falhou
-      Alert.alert("Login falhou. Verifique usuário e senha.");
-    }
   }
 
   return (

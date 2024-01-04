@@ -1,4 +1,7 @@
 import { useState, createContext, ReactNode } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import { api } from "../services/api";
 
 type AuthContextData = {
   user: UserProps;
@@ -7,7 +10,7 @@ type AuthContextData = {
 };
 
 type UserProps = {
-  _id: string;
+  id: string;
   name: string;
   email: string;
   token: string;
@@ -26,17 +29,49 @@ export const AuthContext = createContext({} as AuthContextData);
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<UserProps>({
-    _id: "",
+    id: "",
     name: "",
     email: "",
     token: "",
   });
 
+  const [loadingAuth, setLoadingAuth] = useState(false);
+
   const isAuthenticated = !!user.name;
 
   async function signIn({ email, password }: SignInProps) {
-    console.log(email);
-    console.log(password);
+    setLoadingAuth(true);
+
+    try {
+      const response = await api.post("/login", {
+        email,
+        password,
+      });
+
+      console.log(response.data);
+
+      const { id, name, token } = response.data;
+
+      const data = {
+        ...response.data,
+      };
+
+      await AsyncStorage.setItem("@oplan", JSON.stringify(data));
+
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+      setUser({
+        id,
+        name,
+        email,
+        token,
+      });
+
+      setLoadingAuth(false);
+    } catch (error) {
+      console.log("Erro ao acessar.", error);
+      setLoadingAuth(false);
+    }
   }
 
   return (
