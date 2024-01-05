@@ -6,13 +6,15 @@ import {
   TouchableOpacity,
   Text,
   Image,
-  Alert,
+  ActivityIndicator,
+  Button,
 } from "react-native";
 
+import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from "../contexts/AuthContext";
 
 export default function SingIn() {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, loadingAuth } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,6 +25,13 @@ export default function SingIn() {
     }
 
     await signIn({ email, password });
+  }
+
+  // Navegar para o Register
+  const navigation = useNavigation();
+
+  function handlePress() {
+    navigation.navigate("Register" as never);
   }
 
   return (
@@ -48,7 +57,14 @@ export default function SingIn() {
         onChangeText={setPassword}
       />
       <TouchableOpacity style={styles.buttonEntrar} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Entrar</Text>
+        {loadingAuth ? (
+          <ActivityIndicator size={20} color="#fff" />
+        ) : (
+          <Text style={styles.buttonEntrarText}>Entrar</Text>
+        )}
+      </TouchableOpacity>
+      <TouchableOpacity onPress={handlePress} style={styles.buttonRegister}>
+        <Text style={styles.buttonRegisterText}>Registrar</Text>
       </TouchableOpacity>
     </View>
   );
@@ -92,9 +108,17 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     alignItems: "center",
   },
-  buttonText: {
+  buttonEntrarText: {
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
+  },
+  buttonRegister: {
+    marginTop: 5,
+    padding: 12,
+  },
+  buttonRegisterText: {
+    color: "#fff",
+    fontSize: 18,
   },
 });
