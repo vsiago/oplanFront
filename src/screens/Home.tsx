@@ -1,13 +1,15 @@
 import { StyleSheet, View, ScrollView } from "react-native";
 
 import Header from "../components/Header";
-import NewsCarousel from "../components/NewsCarousel";
+import NewsCarousel from "../components/SCNewsCarousel";
+import SCProducts from "../components/SCProducts";
 
 export default function Home() {
   return (
     <ScrollView style={styles.container}>
       <Header />
       <NewsCarousel />
+      <SCProducts />
     </ScrollView>
   );
 }

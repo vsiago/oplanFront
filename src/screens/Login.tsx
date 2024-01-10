@@ -12,6 +12,7 @@ import {
 
 import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from "../contexts/AuthContext";
+import CostumInputText from "../components/CustumInputText";
 
 export default function SingIn() {
   const { signIn, loadingAuth } = useContext(AuthContext);
@@ -42,20 +43,22 @@ export default function SingIn() {
         resizeMode="contain"
       />
       <Text style={styles.title}>Acessar conta</Text>
+
       <TextInput
         style={styles.input}
         placeholder="Usuário"
         value={email}
         onChangeText={setEmail}
+        placeholderTextColor="#B1C0D7"
       />
-
       <TextInput
         style={styles.input}
         placeholder="Senha"
-        secureTextEntry={true}
         value={password}
         onChangeText={setPassword}
+        placeholderTextColor="#B1C0D7"
       />
+
       <TouchableOpacity style={styles.buttonEntrar} onPress={handleLogin}>
         {loadingAuth ? (
           <ActivityIndicator size={20} color="#fff" />
@@ -84,20 +87,18 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   title: {
-    fontSize: 22,
+    fontSize: 28,
     color: "#fff",
-    padding: 22,
+    marginBottom: 26,
   },
   input: {
     height: 46,
     width: "90%",
-    borderColor: "gray",
-    borderWidth: 1,
     marginBottom: 10,
-    paddingLeft: 10,
-    backgroundColor: "#fff",
-    fontSize: 16,
-    color: "#626262",
+    paddingHorizontal: 14,
+    backgroundColor: "#1E283C",
+    fontSize: 18,
+    color: "#fff",
     borderRadius: 6,
   },
   buttonEntrar: {

@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { View } from "react-native";
 
 import Login from "../screens/Login";
 import Home from "../screens/Home";
@@ -15,14 +16,26 @@ export default function AuthRoutes() {
         options={{ headerShown: false }}
       ></AuthStack.Screen>
       <AuthStack.Screen
-        name="login"
+        name="Login"
         component={Login}
-        options={{ headerShown: false }}
+        options={{
+          headerBackground: () => (
+            <View style={{ backgroundColor: "#2D384F", flex: 1 }} />
+          ),
+          headerTintColor: "#DDE4E9",
+          headerTitle: " ",
+        }}
       ></AuthStack.Screen>
       <AuthStack.Screen
         name="Register"
         component={Register}
-        options={{ headerShown: false }}
+        options={{
+          headerBackground: () => (
+            <View style={{ backgroundColor: "#2D384F", flex: 1 }} />
+          ),
+          headerTintColor: "#DDE4E9",
+          headerTitle: " ",
+        }}
       ></AuthStack.Screen>
     </AuthStack.Navigator>
   );

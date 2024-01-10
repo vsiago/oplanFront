@@ -2,7 +2,7 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableHighlight,
+  TouchableOpacity,
   Image,
   Dimensions,
 } from "react-native";
@@ -15,22 +15,22 @@ export default function Home() {
   const navigation = useNavigation();
 
   const navigateToLogin = () => {
-    navigation.navigate("login" as never);
+    navigation.navigate("Login" as never);
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableHighlight style={styles.touchable}>
+        <TouchableOpacity style={styles.touchable}>
           <Image
             source={require("../../assets/logo-oplan.png")} // Substitua pelo caminho da sua imagem
             style={styles.logo}
             resizeMode="contain"
           />
-        </TouchableHighlight>
-        <TouchableHighlight style={styles.touchable} onPress={navigateToLogin}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.touchable} onPress={navigateToLogin}>
           <Text style={styles.entrar}>Entrar</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -56,10 +56,14 @@ const styles = StyleSheet.create({
   entrar: {
     fontSize: 18,
     color: "#fff",
-    backgroundColor: "#31A7E5",
-    paddingHorizontal: 20,
-    paddingVertical: 6,
-    borderRadius: 6,
+    borderWidth: 2,
+    borderColor: "#31A7E5",
+    paddingHorizontal: 16,
+    paddingLeft: 20,
+    paddingVertical: 4,
+    paddingTop: 6,
+    borderRadius: 10,
+    fontWeight: "500",
   },
   logo: {
     width: 140,
