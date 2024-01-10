@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, Image } from "react-native";
-import Swiper from "react-native-swiper";
+import Swiper from 'react-native-swiper'
 
 export default function NewsCarousel() {
   return (
@@ -9,7 +9,7 @@ export default function NewsCarousel() {
         loop={true}
         paginationStyle={{ bottom: -25 }}
         dotColor="#50596B"
-        activeDotColor="#ADB9D1"
+        activeDotColor="#31A7E5"
       >
         <View style={styles.slide}>
           <Image

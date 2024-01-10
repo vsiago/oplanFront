@@ -1,18 +1,36 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 
 export default function SCProducts() {
+  const buttons = [
+    "Costa Verde",
+    "Master Digital",
+    "Plano Select",
+    "Produto 4",
+    "Produto 5"
+  ]
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Produtos</Text>
-    </View>
+    <>
+      <Text style={styles.text}>produtos</Text>
+      <View style={styles.container}>
+        <ScrollView style={styles.buttonContainer} horizontal>
+          {buttons.map((button, index) => (
+          <TouchableOpacity key={index} style={styles.productCostaVerde}>
+            <Text>
+              {button}
+            </Text>
+          </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 42,
-    marginTop: 20,
+    flex: 1,
+    paddingHorizontal: 20,
   },
   text: {
     color: "#A0B3CF",
@@ -20,5 +38,20 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
     fontWeight: "bold",
     fontSize: 14,
+    paddingHorizontal: 42,
+    marginTop: 20,
+    marginBottom: 15
   },
+  buttonContainer: {
+    height: 150,
+    width: '100%',
+  },
+  productCostaVerde: {
+    width: 120,
+    backgroundColor: '#4F5F81',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    marginRight: 12,
+    borderRadius: 10,
+  }
 });
