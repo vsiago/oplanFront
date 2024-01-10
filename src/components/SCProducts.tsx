@@ -19,13 +19,13 @@ export default function SCProducts() {
       color: "#5C4F81"
     },
     {
-      label: "Produto 4",
-      iconComponent: require('../../assets/icons/icon-plano-select.png'),
+      label: "Nutra Revive",
+      iconComponent: '',
       color: "#814F6A"
     },
     {
-      label: "Produto 5",
-      iconComponent: require('../../assets/icons/icon-plano-select.png'),
+      label: "Revita Care",
+      iconComponent: '',
       color: "#81704F"
     },
   ]
@@ -36,7 +36,7 @@ export default function SCProducts() {
         <ScrollView style={styles.buttonContainer} horizontal showsHorizontalScrollIndicator={false}>
           {products.map((product, index) => (
           <TouchableOpacity key={index} style={[styles.product, {backgroundColor: product.color}]}>
-            <Image source={product.iconComponent} style={styles.iconImage}  />
+            {product.iconComponent ? <Image source={product.iconComponent} style={styles.iconImage} /> : <Text style={styles.avatarCaractereProduct}>{product.label.slice(0, 1)}</Text> }
             <Text style={styles.label}>
               {product.label}
             </Text>
@@ -87,5 +87,10 @@ const styles = StyleSheet.create({
   iconImage: {
     width: 36,
     height: 36
+  },
+  avatarCaractereProduct: {
+    fontSize: 45,
+    fontWeight: '300',
+    marginTop: -15
   }
 });
