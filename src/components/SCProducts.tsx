@@ -13,7 +13,7 @@ export default function SCProducts() {
     <>
       <Text style={styles.text}>produtos</Text>
       <View style={styles.container}>
-        <ScrollView style={styles.buttonContainer} horizontal>
+        <ScrollView style={styles.buttonContainer} horizontal showsHorizontalScrollIndicator={false}>
           {buttons.map((button, index) => (
           <TouchableOpacity key={index} style={styles.productCostaVerde}>
             <Text>
