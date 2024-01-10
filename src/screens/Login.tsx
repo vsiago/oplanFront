@@ -52,6 +52,7 @@ export default function SingIn() {
         placeholderTextColor="#B1C0D7"
       />
       <TextInput
+        secureTextEntry={true}
         style={styles.input}
         placeholder="Senha"
         value={password}

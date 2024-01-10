@@ -72,7 +72,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setLoadingAuth(true);
 
     try {
-      const response = await api.post("/login", {
+      const response = await api.post("/signin", {
         email,
         password,
       });
