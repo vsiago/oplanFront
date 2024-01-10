@@ -3,6 +3,7 @@ import { StyleSheet, View, ScrollView } from "react-native";
 import Header from "../components/Header";
 import NewsCarousel from "../components/SCNewsCarousel";
 import SCProducts from "../components/SCProducts";
+import SCNoticias from "../components/SCNoticias";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Header />
       <NewsCarousel />
       <SCProducts />
+      <SCNoticias />
     </ScrollView>
   );
 }

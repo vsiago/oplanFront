@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 14,
     paddingHorizontal: 35,
-    marginTop: 20,
+    marginTop: 25,
     marginBottom: 15
   },
   buttonContainer: {
