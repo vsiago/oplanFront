@@ -3,6 +3,7 @@ import { View, ActivityIndicator } from "react-native";
 
 import AuthRoutes from "./auth.routes";
 import AppRoutes from "./app.routes";
+import DrawerRoutes from "./drawer.routes";
 
 import { AuthContext } from "../contexts/AuthContext";
 
@@ -24,5 +25,5 @@ export default function Routes() {
     );
   }
 
-  return isAuthenticated ? <AppRoutes /> : <AuthRoutes />;
+  return isAuthenticated ? <DrawerRoutes /> : <AuthRoutes />;
 }
