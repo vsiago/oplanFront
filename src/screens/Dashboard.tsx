@@ -3,9 +3,18 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
+import { useNavigation } from '@react-navigation/native'
+
 import { AuthContext } from "../contexts/AuthContext";
 
+
 export default function Dashboard() {
+  const navigation = useNavigation();
+
+  const handleOpenDrawer = () => {
+    navigation.openDrawer()
+  }
+
   const { signOut, user } = useContext(AuthContext);
 
   return (
@@ -20,6 +29,7 @@ export default function Dashboard() {
       >
         <View style={styles.headerContainer}>
           <Text style={styles.title}>Olá, {user.name}</Text>
+          <Button title="Abrir menu" onPress={handleOpenDrawer}/>
           <LinearGradient
             colors={["#08BF7D", "rgba(8, 191, 125, 0.4)"]}
             style={styles.buttonProductCard}
